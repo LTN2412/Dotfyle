@@ -12,7 +12,7 @@ return {
 		local actions = require("telescope.actions")
 		local transform_mod = require("telescope.actions.mt").transform_mod
 
-		local trouble = require("trouble")
+		local troule = require("trouble")
 		local trouble_telescope = require("trouble.sources.telescope")
 
 		-- or create your custom action
