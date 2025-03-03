@@ -11,7 +11,7 @@ opt.shiftwidth = 4
 opt.expandtab = true
 opt.autoindent = true
 opt.wrap = true
-opt.textwidth = 120
+opt.textwidth = 100
 
 opt.hlsearch = true
 opt.incsearch = true

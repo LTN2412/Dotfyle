@@ -12,19 +12,18 @@ return {
 		local actions = require("telescope.actions")
 		local transform_mod = require("telescope.actions.mt").transform_mod
 
-		local troule = require("trouble")
 		local trouble_telescope = require("trouble.sources.telescope")
 
-		-- or create your custom action
 		local custom_actions = transform_mod({
-			open_trouble_qflist = function(prompt_bufnr)
-				trouble.toggle("quickfix")
+			open_trouble_qflist = function()
+				require("trouble").toggle("quickfix")
 			end,
 		})
 
 		telescope.setup({
 			defaults = {
 				path_display = { "smart" },
+				find_command = { "fd", "--type", "f", "--hidden", "--exclude", ".git" },
 				mappings = {
 					i = {
 						["<C-k>"] = actions.move_selection_previous, -- move to prev result
@@ -32,6 +31,13 @@ return {
 						["<C-q>"] = actions.send_selected_to_qflist + custom_actions.open_trouble_qflist,
 						["<C-t>"] = trouble_telescope.open,
 					},
+				},
+				file_ignore_patterns = {
+					"node_modules/",
+					"build/",
+				},
+				cache_picker = {
+					num_picker = 5,
 				},
 			},
 		})
